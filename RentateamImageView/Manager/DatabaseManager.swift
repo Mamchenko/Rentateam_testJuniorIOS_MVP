@@ -8,9 +8,9 @@
 import Foundation
 import RealmSwift
 
-class CRUD {
+class DatabaseManager {
     
-    let realm = try! Realm()
+   private let realm = try! Realm()
     
     
     func create (date: Date, imageData: Data) {

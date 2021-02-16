@@ -11,30 +11,21 @@ import UIKit
 private let reuseIdentifire = "RickAndMortyCell"
 
 class CharactersViewController: UIViewController, CharactersViewControllerProtocol {
+    func collectionViewReloaded() {
+        collectionView.reloadData()
+    }
+    
+    func addcollection() {
+        view.addSubview(collectionView)
+    }
+    
     
     let infoVC = InfoViewController()
     
-    func collectionViewReloaded() {
-        self.collectionView.reloadData()
-    }
-    
-    func startLoading() {
-        view.addSubview(loader)
-        loader.startAnimating()
-    }
-    
-    func stopLoading() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(3)) {
-            self.loader.stopAnimating()
-        }
-    }
-    
-    
-
-    
-    
-    private let loader: UIActivityIndicatorView = {
-        let loader = UIActivityIndicatorView()
+    lazy private var loader: UIActivityIndicatorView = {
+        let loader = UIActivityIndicatorView(frame: self.view.bounds)
+        loader.style = .large
+        loader.color = .white
         return loader
     }()
     
@@ -57,6 +48,24 @@ class CharactersViewController: UIViewController, CharactersViewControllerProtoc
         presenter?.getArrayOfCharacters()
     }
     
+    
+        
+    func startLoading() {
+        view.addSubview(loader)
+        loader.startAnimating()
+    }
+    
+    func stopLoading() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(3)) {
+            self.loader.stopAnimating()
+            self.addingCollectionView()
+        }
+    }
+    
+    private func addingCollectionView () {
+        view.addSubview(collectionView)
+    }
+    
     func configureViewComponents () {
         
         navigationController?.navigationBar.barTintColor = . white
@@ -67,7 +76,7 @@ class CharactersViewController: UIViewController, CharactersViewControllerProtoc
         navigationItem.rightBarButtonItem?.tintColor = .black
         collectionView.dataSource = self
         collectionView.delegate = self
-    view.addSubview(collectionView)
+    //view.addSubview(collectionView)
     }
     
    @objc private func showSearchBar () {
@@ -91,7 +100,7 @@ extension CharactersViewController: UICollectionViewDelegate, UICollectionViewDa
     }
 
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return Singleton.shared.arrayOfCharactersObject.count
     }
 
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -99,6 +108,9 @@ extension CharactersViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.backgroundColor = UIColor(named: "cellColor")
         cell.layer.cornerRadius = 16
         cell.configConstraints()
+        
+        //cell.imageView.image = Singleton.shared.arrayOfDataObject[indexPath.row].image.toImage()
+        cell.nameLabel.text = Singleton.shared.arrayOfCharactersObject[indexPath.row].name
        // cell.imageView.image = presenter?.arrayOfCharacters[indexPath.row].results[indexPath.row].image.toImage()
         return cell
     }
@@ -112,7 +124,7 @@ extension CharactersViewController: UICollectionViewDelegate, UICollectionViewDa
             rotatingTransform = duration(.fromRright)
     }
         cell.layer.transform = rotatingTransform
-        UIView.animate(withDuration: 1.5) {
+        UIView.animate(withDuration: 0.7) {
             cell.layer.transform =  CATransform3DIdentity
     }
 

@@ -22,7 +22,9 @@ struct NetworkManager {
                 var result : PostsResults
                 if error == nil, let parsData = data {
                     //print ("data \(data)")
-                    guard let posts = try? JSONDecoder().decode([Result].self, from: parsData) else {return}
+                    //print(String(data: parsData, encoding: .utf8))
+
+                    guard let posts = try? JSONDecoder().decode(ApiResponse.self, from: parsData) else {return}
                     result = .success(posts: posts)
                 } else {
                     result = .failure(error: error!.localizedDescription)
@@ -33,9 +35,23 @@ struct NetworkManager {
             }.resume()
         }
     }
+    
+    func getDataFromStringURL (complition: @escaping (Data) -> (Void) ) {
+        for o in Singleton.shared.arrayOfCharactersObject {
+            guard let url = URL(string: o.image) else {return}
+            
+            DispatchQueue.global(qos: .utility).async {
+                if let data = try? Data(contentsOf: url) {
+                    complition(data)
+                }
+            }
+            
+        }
+    }
+    
 }
 
 enum PostsResults {
-    case success(posts: [Result])
+    case success(posts: ApiResponse)
     case failure(error: String)
 }

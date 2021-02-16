@@ -8,16 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		4401F24225DA733500398E59 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401F24125DA733400398E59 /* NetworkManager.swift */; };
-		4401F24825DA741E00398E59 /* ImageCollectionViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401F24725DA741E00398E59 /* ImageCollectionViewPresenter.swift */; };
+		4401F24825DA741E00398E59 /* CharactersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401F24725DA741E00398E59 /* CharactersPresenter.swift */; };
 		4401F24D25DA76F400398E59 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401F24C25DA76F400398E59 /* RealmModel.swift */; };
 		4401F25225DA7BD700398E59 /* ImageViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401F25125DA7BD700398E59 /* ImageViewCollectionViewCell.swift */; };
 		4401F25525DA7CA000398E59 /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401F25425DA7CA000398E59 /* APIModel.swift */; };
 		443C3FA925DAA982006C804F /* Extension .swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C3FA825DAA982006C804F /* Extension .swift */; };
 		443C3FAC25DADAD8006C804F /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C3FAB25DADAD8006C804F /* InfoViewController.swift */; };
 		44E932F925DB34B100124C8C /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E932F825DB34B100124C8C /* DatabaseManager.swift */; };
+		44E9330825DBD00D00124C8C /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9330725DBD00D00124C8C /* Singleton.swift */; };
 		44EA4B1F25DA606400F59726 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EA4B1E25DA606400F59726 /* AppDelegate.swift */; };
 		44EA4B2125DA606400F59726 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EA4B2025DA606400F59726 /* SceneDelegate.swift */; };
-		44EA4B2325DA606400F59726 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EA4B2225DA606400F59726 /* ViewController.swift */; };
+		44EA4B2325DA606400F59726 /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EA4B2225DA606400F59726 /* CharactersViewController.swift */; };
 		44EA4B2625DA606400F59726 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44EA4B2425DA606400F59726 /* Main.storyboard */; };
 		44EA4B2825DA606500F59726 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44EA4B2725DA606500F59726 /* Assets.xcassets */; };
 		44EA4B2B25DA606500F59726 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44EA4B2925DA606500F59726 /* LaunchScreen.storyboard */; };
@@ -28,17 +29,18 @@
 		0452B746EB2A90E8A102E79C /* Pods-RentateamImageView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RentateamImageView.debug.xcconfig"; path = "Target Support Files/Pods-RentateamImageView/Pods-RentateamImageView.debug.xcconfig"; sourceTree = "<group>"; };
 		2F4C56BFCF4158F20594B563 /* Pods-RentateamImageView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RentateamImageView.release.xcconfig"; path = "Target Support Files/Pods-RentateamImageView/Pods-RentateamImageView.release.xcconfig"; sourceTree = "<group>"; };
 		4401F24125DA733400398E59 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		4401F24725DA741E00398E59 /* ImageCollectionViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewPresenter.swift; sourceTree = "<group>"; };
+		4401F24725DA741E00398E59 /* CharactersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersPresenter.swift; sourceTree = "<group>"; };
 		4401F24C25DA76F400398E59 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		4401F25125DA7BD700398E59 /* ImageViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		4401F25425DA7CA000398E59 /* APIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
 		443C3FA825DAA982006C804F /* Extension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension .swift"; sourceTree = "<group>"; };
 		443C3FAB25DADAD8006C804F /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		44E932F825DB34B100124C8C /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		44E9330725DBD00D00124C8C /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		44EA4B1B25DA606400F59726 /* RentateamImageView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RentateamImageView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44EA4B1E25DA606400F59726 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44EA4B2025DA606400F59726 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		44EA4B2225DA606400F59726 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		44EA4B2225DA606400F59726 /* CharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewController.swift; sourceTree = "<group>"; };
 		44EA4B2525DA606400F59726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44EA4B2725DA606500F59726 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44EA4B2A25DA606500F59726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,7 +80,7 @@
 		4401F24525DA73E200398E59 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				44EA4B2225DA606400F59726 /* ViewController.swift */,
+				44EA4B2225DA606400F59726 /* CharactersViewController.swift */,
 				443C3FAB25DADAD8006C804F /* InfoViewController.swift */,
 			);
 			path = View;
@@ -87,7 +89,7 @@
 		4401F24625DA73EC00398E59 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				4401F24725DA741E00398E59 /* ImageCollectionViewPresenter.swift */,
+				4401F24725DA741E00398E59 /* CharactersPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -106,6 +108,7 @@
 			children = (
 				4401F25125DA7BD700398E59 /* ImageViewCollectionViewCell.swift */,
 				443C3FA825DAA982006C804F /* Extension .swift */,
+				44E9330725DBD00D00124C8C /* Singleton.swift */,
 			);
 			path = "Cell ";
 			sourceTree = "<group>";
@@ -270,14 +273,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				4401F24225DA733500398E59 /* NetworkManager.swift in Sources */,
+				44E9330825DBD00D00124C8C /* Singleton.swift in Sources */,
 				44E932F925DB34B100124C8C /* DatabaseManager.swift in Sources */,
-				44EA4B2325DA606400F59726 /* ViewController.swift in Sources */,
+				44EA4B2325DA606400F59726 /* CharactersViewController.swift in Sources */,
 				44EA4B1F25DA606400F59726 /* AppDelegate.swift in Sources */,
 				4401F24D25DA76F400398E59 /* RealmModel.swift in Sources */,
 				443C3FAC25DADAD8006C804F /* InfoViewController.swift in Sources */,
 				4401F25525DA7CA000398E59 /* APIModel.swift in Sources */,
 				4401F25225DA7BD700398E59 /* ImageViewCollectionViewCell.swift in Sources */,
-				4401F24825DA741E00398E59 /* ImageCollectionViewPresenter.swift in Sources */,
+				4401F24825DA741E00398E59 /* CharactersPresenter.swift in Sources */,
 				44EA4B2125DA606400F59726 /* SceneDelegate.swift in Sources */,
 				443C3FA925DAA982006C804F /* Extension .swift in Sources */,
 			);

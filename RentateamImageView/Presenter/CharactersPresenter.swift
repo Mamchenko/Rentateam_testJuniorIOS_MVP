@@ -10,10 +10,10 @@ import Foundation
 
 class CharactersPresenter: CharactersPresenterProtocol {
     
-    var arrayOfCharacters  : [Result] = []
+    var arrayOfCharacters  : [Characters] = []
   var networkManager = NetworkManager()
     var dataLoaded: Bool?
-    var controller : CharactersViewControllerProtocol
+    var controller: CharactersViewControllerProtocol
     
      init (controller: CharactersViewControllerProtocol ) {
         self.controller = controller
@@ -21,12 +21,12 @@ class CharactersPresenter: CharactersPresenterProtocol {
    
     
      func getArrayOfCharacters () {
+        controller.startLoading()
         networkManager.getData {  (result) -> (Void) in
-            //self.controller.startLoading()
             switch result {
             case .success(let posts):
                 DispatchQueue.main.async {
-                    self.arrayOfCharacters = posts
+                    Singleton.shared.arrayOfCharactersObject = posts.results
                     self.dataLoaded = true
                     self.dataCheck()
                 }
@@ -38,9 +38,13 @@ class CharactersPresenter: CharactersPresenterProtocol {
     
     
     private func dataCheck () {
+       // print (Singleton.shared.arrayOfCharactersObject[1].name)
         if dataLoaded != nil {
-            controller.collectionViewReloaded()
             controller.stopLoading()
+            controller.collectionViewReloaded()
+
+            
+            
             
         }
     }
