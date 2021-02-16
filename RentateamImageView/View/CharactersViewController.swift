@@ -45,6 +45,8 @@ class CharactersViewController: UIViewController, CharactersViewControllerProtoc
         presenter = CharactersPresenter(controller: self)
         configureViewComponents()
         presenter?.getArrayOfCharacters()
+        presenter?.getArrayOfImageData()
+       
     }
     
     
@@ -103,7 +105,6 @@ extension CharactersViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.layer.cornerRadius = 16
         cell.configConstraints()
         cell.nameLabel.text = Singleton.shared.arrayOfCharactersObject[indexPath.row].name
-       // cell.imageView.image = presenter?.arrayOfCharacters[indexPath.row].results[indexPath.row].image.toImage()
         return cell
     }
     

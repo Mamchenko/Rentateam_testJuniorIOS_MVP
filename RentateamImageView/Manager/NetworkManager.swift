@@ -21,9 +21,6 @@ struct NetworkManager {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 var result : PostsResults
                 if error == nil, let parsData = data {
-                    //print ("data \(data)")
-                    //print(String(data: parsData, encoding: .utf8))
-
                     guard let posts = try? JSONDecoder().decode(ApiResponse.self, from: parsData) else {return}
                     result = .success(posts: posts)
                 } else {
@@ -37,10 +34,11 @@ struct NetworkManager {
     }
     
     func getDataFromStringURL (complition: @escaping (Data) -> (Void) ) {
+        DispatchQueue.global(qos: .utility).async {
         for o in Singleton.shared.arrayOfCharactersObject {
+            print("arrrr \(o.image)")
             guard let url = URL(string: o.image) else {return}
             
-            DispatchQueue.global(qos: .utility).async {
                 if let data = try? Data(contentsOf: url) {
                     complition(data)
                 }

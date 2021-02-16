@@ -10,8 +10,30 @@ import Foundation
 
 class CharactersPresenter: CharactersPresenterProtocol {
     
+    
+    var arrayOfImageData: [Data] = []
+    var getCharactersData: Bool = false
+    
+    func createRealmObject() {
+        for o in arrayOfImageData {
+            let date = Date()
+            database.create(date: date, imageData: o)
+            
+        }
+    }
+    
+    func getArrayOfImageData() {
+        networkManager.getDataFromStringURL { (data) -> (Void) in
+            if self.getCharactersData != false {
+                self.arrayOfImageData.append(data)
+            }
+        }
+    }
+    
+    
   var networkManager = NetworkManager()
     var controller: CharactersViewControllerProtocol
+    var database = DatabaseManager()
     
      init (controller: CharactersViewControllerProtocol ) {
         self.controller = controller
@@ -26,7 +48,10 @@ class CharactersPresenter: CharactersPresenterProtocol {
                 DispatchQueue.main.async {
                     Singleton.shared.arrayOfCharactersObject = posts.results
                     self.dataCheck()
+                    self.getCharactersData = true
                     self.saveDateOfLoading()
+                    
+                    
                 }
             case .failure(let error):
                 print(error)
@@ -48,4 +73,6 @@ class CharactersPresenter: CharactersPresenterProtocol {
 
 protocol CharactersPresenterProtocol {
     func getArrayOfCharacters ()
+    func getArrayOfImageData ()
+    func createRealmObject ()
 }

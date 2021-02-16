@@ -22,10 +22,10 @@ class Singleton {
     var arrayOfDataImage: [Data] = []
     
     
-//    func arr () {
-//        networkManager.getDataFromStringURL { [weak self] (data) -> (Void) in
-//            self?.database.create(date: self!.currentDate, imageData: data)
-//        }
-//    }
+    func appendArrayOfImageData () {
+        networkManager.getDataFromStringURL { [weak self] (data) -> (Void) in
+            self?.arrayOfDataImage.append(data)
+        }
+    }
 
 }
