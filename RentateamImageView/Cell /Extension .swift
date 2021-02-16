@@ -16,3 +16,13 @@ extension String {
         return nil
     }
 }
+
+extension Date {
+    func currentDateToString () -> String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+}

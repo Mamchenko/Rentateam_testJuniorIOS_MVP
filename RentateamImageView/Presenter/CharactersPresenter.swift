@@ -10,9 +10,7 @@ import Foundation
 
 class CharactersPresenter: CharactersPresenterProtocol {
     
-    var arrayOfCharacters  : [Characters] = []
   var networkManager = NetworkManager()
-    var dataLoaded: Bool?
     var controller: CharactersViewControllerProtocol
     
      init (controller: CharactersViewControllerProtocol ) {
@@ -27,8 +25,8 @@ class CharactersPresenter: CharactersPresenterProtocol {
             case .success(let posts):
                 DispatchQueue.main.async {
                     Singleton.shared.arrayOfCharactersObject = posts.results
-                    self.dataLoaded = true
                     self.dataCheck()
+                    self.saveDateOfLoading()
                 }
             case .failure(let error):
                 print(error)
@@ -38,15 +36,13 @@ class CharactersPresenter: CharactersPresenterProtocol {
     
     
     private func dataCheck () {
-       // print (Singleton.shared.arrayOfCharactersObject[1].name)
-        if dataLoaded != nil {
             controller.stopLoading()
             controller.collectionViewReloaded()
-
-            
-            
-            
-        }
+    }
+    
+    private func saveDateOfLoading() {
+        let dateOfLoading = Date()
+        print ("data of loading \(dateOfLoading)")
     }
 }
 

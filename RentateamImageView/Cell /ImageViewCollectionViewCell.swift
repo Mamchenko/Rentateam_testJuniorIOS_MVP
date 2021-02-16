@@ -21,6 +21,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     var nameLabel: UILabel  {
         let view: UILabel = UILabel()
         view.backgroundColor = .white
+        view.textColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }

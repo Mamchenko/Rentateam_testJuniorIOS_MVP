@@ -42,11 +42,12 @@ class CharactersViewController: UIViewController, CharactersViewControllerProtoc
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         presenter = CharactersPresenter(controller: self)
         configureViewComponents()
         presenter?.getArrayOfCharacters()
     }
+    
+    
     
     
         
@@ -59,6 +60,7 @@ class CharactersViewController: UIViewController, CharactersViewControllerProtoc
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(3)) {
             self.loader.stopAnimating()
             self.addingCollectionView()
+            
         }
     }
     
@@ -81,15 +83,7 @@ class CharactersViewController: UIViewController, CharactersViewControllerProtoc
     
    @objc private func showSearchBar () {
     print ("123")
-    print(presenter?.arrayOfCharacters.count)
     }
-    
-   
-
-    
-    
-
-
 }
 
   //MARK: - Collection view DataSource and Delegate
@@ -108,8 +102,6 @@ extension CharactersViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.backgroundColor = UIColor(named: "cellColor")
         cell.layer.cornerRadius = 16
         cell.configConstraints()
-        
-        //cell.imageView.image = Singleton.shared.arrayOfDataObject[indexPath.row].image.toImage()
         cell.nameLabel.text = Singleton.shared.arrayOfCharactersObject[indexPath.row].name
        // cell.imageView.image = presenter?.arrayOfCharacters[indexPath.row].results[indexPath.row].image.toImage()
         return cell
