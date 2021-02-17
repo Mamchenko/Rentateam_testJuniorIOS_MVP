@@ -9,9 +9,6 @@ import Foundation
 
 struct NetworkManager {
     
-    
-      
-    
     func getData (complition: @escaping ((PostsResults) ->(Void))) {
         let urlString = "https://rickandmortyapi.com/api/character"
         guard let url = URL(string: urlString) else {return}
@@ -26,27 +23,20 @@ struct NetworkManager {
                 } else {
                     result = .failure(error: error!.localizedDescription)
                 }
-                    complition(result)
+                complition(result)
                 
                 
             }.resume()
         }
     }
     
-    func getDataFromStringURL (complition: @escaping (Data) -> (Void) ) {
-        DispatchQueue.global(qos: .utility).async {
-        for o in Singleton.shared.arrayOfCharactersObject {
-            print("arrrr \(o.image)")
-            guard let url = URL(string: o.image) else {return}
-            
-                if let data = try? Data(contentsOf: url) {
-                    complition(data)
-                }
-            }
-            
+    func getImageData(by urlStr: String, complition: @escaping (Data) -> (Void) ) {
+        guard let url = URL(string: urlStr) else {return}
+        
+        if let data = try? Data(contentsOf: url) {
+            complition(data)
         }
     }
-    
 }
 
 enum PostsResults {

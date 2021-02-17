@@ -32,7 +32,7 @@ class CharactersViewController: UIViewController, CharactersViewControllerProtoc
     lazy private var collectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         let collectionViewPosition = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-      var collectionView = UICollectionView(frame: collectionViewPosition, collectionViewLayout: collectionViewLayout)
+        var collectionView = UICollectionView(frame: collectionViewPosition, collectionViewLayout: collectionViewLayout)
         collectionView.register(CharactersCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifire)
         collectionView.backgroundColor = UIColor(named: "mainBckgroundColor")
         return collectionView
@@ -45,24 +45,17 @@ class CharactersViewController: UIViewController, CharactersViewControllerProtoc
         presenter = CharactersPresenter(controller: self)
         configureViewComponents()
         presenter?.getArrayOfCharacters()
-        presenter?.getArrayOfImageData()
-       
     }
     
-    
-    
-    
-        
     func startLoading() {
         view.addSubview(loader)
         loader.startAnimating()
     }
     
     func stopLoading() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(3)) {
-            self.loader.stopAnimating()
-            self.addingCollectionView()
-            
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(3)) { [weak self] in
+            self?.loader.stopAnimating()
+            self?.addingCollectionView()
         }
     }
     
@@ -76,35 +69,37 @@ class CharactersViewController: UIViewController, CharactersViewControllerProtoc
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.isTranslucent = true
         navigationItem.title = "Rick and Morty"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showSearchBar))
         navigationItem.rightBarButtonItem?.tintColor = .black
         collectionView.dataSource = self
         collectionView.delegate = self
-    //view.addSubview(collectionView)
-    }
-    
-   @objc private func showSearchBar () {
-    print ("123")
     }
 }
 
-  //MARK: - Collection view DataSource and Delegate
+//MARK: - Collection view DataSource and Delegate
 extension CharactersViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter?.getImageAndDate(by: Singleton.shared.arrayOfCharactersObject[indexPath.row].image, handler: { [weak self] (image, date) in
+            self?.infoVC.imageView.image = image
+            self?.infoVC.dateLabel.text = date.currentDateToString()
+        })
+        
         self.navigationController?.pushViewController(infoVC, animated: true)
     }
-
-     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Singleton.shared.arrayOfCharactersObject.count
     }
-
-     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifire, for: indexPath) as! CharactersCollectionViewCell
         cell.backgroundColor = UIColor(named: "cellColor")
         cell.layer.cornerRadius = 16
         cell.configConstraints()
         cell.nameLabel.text = Singleton.shared.arrayOfCharactersObject[indexPath.row].name
+        presenter?.getImageAndDate(by: Singleton.shared.arrayOfCharactersObject[indexPath.row].image, handler: { (image, _) in
+            cell.imageView.image = image
+        })
         return cell
     }
     
@@ -112,23 +107,23 @@ extension CharactersViewController: UICollectionViewDelegate, UICollectionViewDa
         var rotatingTransform: CATransform3D
         if indexPath.row % 2 == 0 {
             rotatingTransform = duration(.fromLeft)
-    }
+        }
         else {
             rotatingTransform = duration(.fromRright)
-    }
+        }
         cell.layer.transform = rotatingTransform
-        UIView.animate(withDuration: 0.7) {
+        UIView.animate(withDuration: 0.5) {
             cell.layer.transform =  CATransform3DIdentity
+        }
+        
     }
-
-}
     
     private func duration (_ from: AnimationDuration) -> CATransform3D {
         switch from {
         case .fromLeft:
-         return CATransform3DTranslate(CATransform3DIdentity, -500, 0, 0)
+            return CATransform3DTranslate(CATransform3DIdentity, -500, 0, 0)
         case .fromRright:
-           return CATransform3DTranslate(CATransform3DIdentity, 500, 0, 0)
+            return CATransform3DTranslate(CATransform3DIdentity, 500, 0, 0)
         }
     }
 }

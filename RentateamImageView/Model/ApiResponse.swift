@@ -8,13 +8,11 @@
 import Foundation
 
 struct ApiResponse: Codable {
-   
     let results: [Characters]
 }
 
 struct Characters: Codable {
     var name: String
     var image: String
-    
 }
  

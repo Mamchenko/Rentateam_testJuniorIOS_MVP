@@ -6,52 +6,36 @@
 //
 
 import Foundation
+import UIKit
 
 
 class CharactersPresenter: CharactersPresenterProtocol {
     
-    
-    var arrayOfImageData: [Data] = []
-    var getCharactersData: Bool = false
-    
-    func createRealmObject() {
-        for o in arrayOfImageData {
-            let date = Date()
-            database.create(date: date, imageData: o)
-            
-        }
-    }
-    
-    func getArrayOfImageData() {
-        networkManager.getDataFromStringURL { (data) -> (Void) in
-            if self.getCharactersData != false {
-                self.arrayOfImageData.append(data)
-            }
-        }
-    }
-    
-    
-  var networkManager = NetworkManager()
+    var networkManager = NetworkManager()
     var controller: CharactersViewControllerProtocol
     var database = DatabaseManager()
     
-     init (controller: CharactersViewControllerProtocol ) {
+    init (controller: CharactersViewControllerProtocol ) {
         self.controller = controller
     }
-   
     
-     func getArrayOfCharacters () {
+    var getCharactersData: Bool = false
+    private let imageManager: DateAndImageManager = DateAndImageManager()
+    
+    func getImageAndDate(by urlStr: String, handler: @escaping (UIImage, Date) -> ()) {
+        imageManager.getObject(urlStr) { (image, date) in
+            handler(image, date)
+        }
+    }
+    
+    func getArrayOfCharacters () {
         controller.startLoading()
-        networkManager.getData {  (result) -> (Void) in
+        networkManager.getData { [weak self] (result) -> (Void) in
             switch result {
             case .success(let posts):
                 DispatchQueue.main.async {
                     Singleton.shared.arrayOfCharactersObject = posts.results
-                    self.dataCheck()
-                    self.getCharactersData = true
-                    self.saveDateOfLoading()
-                    
-                    
+                    self?.dataCheck()
                 }
             case .failure(let error):
                 print(error)
@@ -61,18 +45,12 @@ class CharactersPresenter: CharactersPresenterProtocol {
     
     
     private func dataCheck () {
-            controller.stopLoading()
-            controller.collectionViewReloaded()
-    }
-    
-    private func saveDateOfLoading() {
-        let dateOfLoading = Date()
-        print ("data of loading \(dateOfLoading)")
+        controller.stopLoading()
+        controller.collectionViewReloaded()
     }
 }
 
 protocol CharactersPresenterProtocol {
     func getArrayOfCharacters ()
-    func getArrayOfImageData ()
-    func createRealmObject ()
+    func getImageAndDate(by urlStr: String, handler: @escaping (UIImage, Date) -> ())
 }

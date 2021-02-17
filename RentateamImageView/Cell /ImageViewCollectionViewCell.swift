@@ -16,9 +16,11 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     
     var imageView: UIImageView =  {
         let view = UIImageView()
+        view.layer.masksToBounds = true
         view.layer.cornerRadius = 10
         view.backgroundColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.sizeToFit()
         return view
     }()
     
@@ -37,7 +39,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     }()
     
     func configConstraints () {
-
+        
         [imageView, nameLabel].forEach {addSubview($0)}
         
         imageView.snp.makeConstraints { (make) in
@@ -52,8 +54,5 @@ class CharactersCollectionViewCell: UICollectionViewCell {
             make.trailing.equalTo(self.snp.trailing).offset(-16)
             make.bottom.equalTo(self.snp.bottom).offset(-16)
         }
-        
-        
     }
-    
 }

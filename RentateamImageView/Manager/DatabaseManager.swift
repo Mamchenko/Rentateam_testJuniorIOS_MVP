@@ -10,15 +10,15 @@ import RealmSwift
 
 class DatabaseManager {
     
-   private let realm = try! Realm()
+    private lazy var realm = try! Realm()
     
     
-    func create (date: Date, imageData: Data) {
-        
+    func create (date: Date, imageData: Data, imageURL: String) {
         do {
-            let modelObject = RealmModel()
+            let modelObject = RealmRickAndMortyModel()
             modelObject.createdAt = date
             modelObject.imageData = imageData
+            modelObject.imageURL = imageURL
             try realm.write({
                 realm.add(modelObject)
             })
@@ -28,9 +28,11 @@ class DatabaseManager {
         }
     }
     
-    func getObjects () -> [RealmModel] {
-        let arrayOfResult = realm.objects(RealmModel.self)
-        return Array(arrayOfResult)
+    func getDataAndDate(by url: String) -> (Data?, Date?) {
+        let data = Array(realm.objects(RealmRickAndMortyModel.self).filter({ $0.imageURL == url })).first?.imageData
+        
+        let date = Array(realm.objects(RealmRickAndMortyModel.self).filter({ $0.imageURL == url })).first?.createdAt
+        
+        return (data, date)
     }
 }
-

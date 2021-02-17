@@ -8,14 +8,13 @@
 import Foundation
 import UIKit
 
-extension String {
+extension Data {
     func toImage() -> UIImage? {
-        if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters){
-            return UIImage(data: data)
-        }
-        return nil
+        let image = UIImage(data: self)
+        return image 
     }
 }
+
 
 extension Date {
     func currentDateToString () -> String {

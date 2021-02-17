@@ -8,11 +8,12 @@
 import Foundation
 import RealmSwift
 
-class RealmModel: Object {
+class RealmRickAndMortyModel: Object {
     @objc dynamic var imageData: Data? = nil
     @objc dynamic var createdAt: Date = Date(timeIntervalSince1970: 1)
-    
+    @objc dynamic var imageURL: String? = nil
     
     
 }
+ 
  

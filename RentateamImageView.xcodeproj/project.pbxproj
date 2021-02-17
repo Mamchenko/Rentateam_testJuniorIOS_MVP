@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		4401F24225DA733500398E59 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401F24125DA733400398E59 /* NetworkManager.swift */; };
 		4401F24825DA741E00398E59 /* CharactersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401F24725DA741E00398E59 /* CharactersPresenter.swift */; };
-		4401F24D25DA76F400398E59 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401F24C25DA76F400398E59 /* RealmModel.swift */; };
+		4401F24D25DA76F400398E59 /* RealmRickAndMortyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401F24C25DA76F400398E59 /* RealmRickAndMortyModel.swift */; };
 		4401F25225DA7BD700398E59 /* ImageViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401F25125DA7BD700398E59 /* ImageViewCollectionViewCell.swift */; };
-		4401F25525DA7CA000398E59 /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401F25425DA7CA000398E59 /* APIModel.swift */; };
+		4401F25525DA7CA000398E59 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401F25425DA7CA000398E59 /* ApiResponse.swift */; };
 		443C3FA925DAA982006C804F /* Extension .swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C3FA825DAA982006C804F /* Extension .swift */; };
 		443C3FAC25DADAD8006C804F /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C3FAB25DADAD8006C804F /* InfoViewController.swift */; };
+		44B6A15B25DD334900BD2216 /* DateAndImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B6A15A25DD334900BD2216 /* DateAndImageManager.swift */; };
+		44B6A17625DD5E5F00BD2216 /* InfoViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B6A17525DD5E5F00BD2216 /* InfoViewControllerPresenter.swift */; };
 		44E932F925DB34B100124C8C /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E932F825DB34B100124C8C /* DatabaseManager.swift */; };
 		44E9330825DBD00D00124C8C /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E9330725DBD00D00124C8C /* Singleton.swift */; };
 		44EA4B1F25DA606400F59726 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EA4B1E25DA606400F59726 /* AppDelegate.swift */; };
@@ -30,11 +32,13 @@
 		2F4C56BFCF4158F20594B563 /* Pods-RentateamImageView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RentateamImageView.release.xcconfig"; path = "Target Support Files/Pods-RentateamImageView/Pods-RentateamImageView.release.xcconfig"; sourceTree = "<group>"; };
 		4401F24125DA733400398E59 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4401F24725DA741E00398E59 /* CharactersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersPresenter.swift; sourceTree = "<group>"; };
-		4401F24C25DA76F400398E59 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		4401F24C25DA76F400398E59 /* RealmRickAndMortyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRickAndMortyModel.swift; sourceTree = "<group>"; };
 		4401F25125DA7BD700398E59 /* ImageViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCollectionViewCell.swift; sourceTree = "<group>"; };
-		4401F25425DA7CA000398E59 /* APIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
+		4401F25425DA7CA000398E59 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		443C3FA825DAA982006C804F /* Extension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension .swift"; sourceTree = "<group>"; };
 		443C3FAB25DADAD8006C804F /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		44B6A15A25DD334900BD2216 /* DateAndImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndImageManager.swift; sourceTree = "<group>"; };
+		44B6A17525DD5E5F00BD2216 /* InfoViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewControllerPresenter.swift; sourceTree = "<group>"; };
 		44E932F825DB34B100124C8C /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		44E9330725DBD00D00124C8C /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		44EA4B1B25DA606400F59726 /* RentateamImageView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RentateamImageView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				4401F24125DA733400398E59 /* NetworkManager.swift */,
+				44B6A15A25DD334900BD2216 /* DateAndImageManager.swift */,
 				44E932F825DB34B100124C8C /* DatabaseManager.swift */,
 			);
 			path = Manager;
@@ -90,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				4401F24725DA741E00398E59 /* CharactersPresenter.swift */,
+				44B6A17525DD5E5F00BD2216 /* InfoViewControllerPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -97,8 +103,8 @@
 		4401F24B25DA76E600398E59 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4401F24C25DA76F400398E59 /* RealmModel.swift */,
-				4401F25425DA7CA000398E59 /* APIModel.swift */,
+				4401F24C25DA76F400398E59 /* RealmRickAndMortyModel.swift */,
+				4401F25425DA7CA000398E59 /* ApiResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -277,13 +283,15 @@
 				44E932F925DB34B100124C8C /* DatabaseManager.swift in Sources */,
 				44EA4B2325DA606400F59726 /* CharactersViewController.swift in Sources */,
 				44EA4B1F25DA606400F59726 /* AppDelegate.swift in Sources */,
-				4401F24D25DA76F400398E59 /* RealmModel.swift in Sources */,
+				4401F24D25DA76F400398E59 /* RealmRickAndMortyModel.swift in Sources */,
 				443C3FAC25DADAD8006C804F /* InfoViewController.swift in Sources */,
-				4401F25525DA7CA000398E59 /* APIModel.swift in Sources */,
+				4401F25525DA7CA000398E59 /* ApiResponse.swift in Sources */,
 				4401F25225DA7BD700398E59 /* ImageViewCollectionViewCell.swift in Sources */,
 				4401F24825DA741E00398E59 /* CharactersPresenter.swift in Sources */,
 				44EA4B2125DA606400F59726 /* SceneDelegate.swift in Sources */,
+				44B6A17625DD5E5F00BD2216 /* InfoViewControllerPresenter.swift in Sources */,
 				443C3FA925DAA982006C804F /* Extension .swift in Sources */,
+				44B6A15B25DD334900BD2216 /* DateAndImageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
