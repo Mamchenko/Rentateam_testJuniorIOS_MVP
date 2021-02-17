@@ -1,1 +1,1 @@
-# Из-за реалма не смог залить все, поэтому добавил pods в .gitignore
+# Applied technology: RealmSwift, Snapkit
