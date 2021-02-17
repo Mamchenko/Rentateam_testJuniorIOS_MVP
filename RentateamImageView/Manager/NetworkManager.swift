@@ -8,11 +8,10 @@
 import Foundation
 
 struct NetworkManager {
+    let urlString = "https://rickandmortyapi.com/api/character"
     
     func getData (complition: @escaping ((PostsResults) ->(Void))) {
-        let urlString = "https://rickandmortyapi.com/api/character"
         guard let url = URL(string: urlString) else {return}
-        
         
         DispatchQueue.global(qos: .utility).async {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -32,14 +31,9 @@ struct NetworkManager {
     
     func getImageData(by urlStr: String, complition: @escaping (Data) -> (Void) ) {
         guard let url = URL(string: urlStr) else {return}
-        
         if let data = try? Data(contentsOf: url) {
             complition(data)
         }
     }
 }
 
-enum PostsResults {
-    case success(posts: ApiResponse)
-    case failure(error: String)
-}

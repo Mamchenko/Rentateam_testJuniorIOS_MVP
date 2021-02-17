@@ -10,7 +10,6 @@ import Foundation
 class Singleton {
     static let shared = Singleton()
     var arrayOfCharactersObject: [Characters] = []
-
     private init () {}
 }
 

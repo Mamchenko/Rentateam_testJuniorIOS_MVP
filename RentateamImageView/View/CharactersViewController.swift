@@ -10,14 +10,10 @@ import UIKit
 
 private let reuseIdentifire = "RickAndMortyCell"
 
-class CharactersViewController: UIViewController, CharactersViewControllerProtocol {
-    func collectionViewReloaded() {
-        collectionView.reloadData()
-    }
+class CharactersViewController: UIViewController  {
     
-    func addcollection() {
-        view.addSubview(collectionView)
-    }
+    
+    
     
     
     let infoVC = InfoViewController()
@@ -47,24 +43,13 @@ class CharactersViewController: UIViewController, CharactersViewControllerProtoc
         presenter?.getArrayOfCharacters()
     }
     
-    func startLoading() {
-        view.addSubview(loader)
-        loader.startAnimating()
-    }
     
-    func stopLoading() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(3)) { [weak self] in
-            self?.loader.stopAnimating()
-            self?.addingCollectionView()
-        }
-    }
     
-    private func addingCollectionView () {
+    private func addCollectionView() {
         view.addSubview(collectionView)
     }
     
     func configureViewComponents () {
-        
         navigationController?.navigationBar.barTintColor = . white
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.isTranslucent = true
@@ -138,22 +123,27 @@ extension CharactersViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (view.frame.width - 36) / 2
         let height = (view.frame.height - 36) / 3
-        
         return CGSize(width: width, height: height)
     }
 }
 
-
-protocol CharactersViewControllerProtocol {
-    func startLoading ()
-    func stopLoading ()
-    func collectionViewReloaded ()
+extension CharactersViewController: CharactersViewControllerProtocol {
+    func startLoading() {
+        view.addSubview(loader)
+        loader.startAnimating()
+    }
+    
+    func stopLoading() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(3)) { [weak self] in
+            self?.loader.stopAnimating()
+            self?.addCollectionView()
+        }
+    }
+    
+    func collectionViewReloaded() {
+        collectionView.reloadData()
+    }
     
 }
 
 
-
-enum AnimationDuration {
-    case fromLeft
-    case fromRright
-}

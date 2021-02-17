@@ -10,10 +10,10 @@ import UIKit
 
 class InfoViewControllerPresenter: InfoViewControllerPresenterProtocol {
     
-    let controller: InfoViewControllerProtocol
-    let imageManager = DateAndImageManager()
+   weak var controller: InfoViewControllerProtocol?
+   private let imageManager = DateAndImageManager()
     
-    init(controller: InfoViewControllerProtocol) {
+    init(controller: InfoViewControllerProtocol?) {
         self.controller = controller
     }
     
@@ -25,6 +25,4 @@ class InfoViewControllerPresenter: InfoViewControllerPresenterProtocol {
     }
 }
 
-protocol InfoViewControllerPresenterProtocol {
-    func getImageAndData(by urlStr: String, handler: @escaping (UIImage, Date) -> ())
-}
+

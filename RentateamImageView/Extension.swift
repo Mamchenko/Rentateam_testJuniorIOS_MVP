@@ -8,12 +8,6 @@
 import Foundation
 import UIKit
 
-extension Data {
-    func toImage() -> UIImage? {
-        let image = UIImage(data: self)
-        return image 
-    }
-}
 
 
 extension Date {

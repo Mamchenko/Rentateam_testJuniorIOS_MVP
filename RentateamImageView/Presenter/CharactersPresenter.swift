@@ -11,11 +11,11 @@ import UIKit
 
 class CharactersPresenter: CharactersPresenterProtocol {
     
-    var networkManager = NetworkManager()
-    var controller: CharactersViewControllerProtocol
-    var database = DatabaseManager()
+   private var networkManager = NetworkManager()
+    weak var controller: CharactersViewControllerProtocol?
+   private var database = DatabaseManager()
     
-    init (controller: CharactersViewControllerProtocol ) {
+    init (controller: CharactersViewControllerProtocol? ) {
         self.controller = controller
     }
     
@@ -29,7 +29,7 @@ class CharactersPresenter: CharactersPresenterProtocol {
     }
     
     func getArrayOfCharacters () {
-        controller.startLoading()
+        controller?.startLoading()
         networkManager.getData { [weak self] (result) -> (Void) in
             switch result {
             case .success(let posts):
@@ -45,12 +45,9 @@ class CharactersPresenter: CharactersPresenterProtocol {
     
     
     private func dataCheck () {
-        controller.stopLoading()
-        controller.collectionViewReloaded()
+        controller?.stopLoading()
+        controller?.collectionViewReloaded()
     }
 }
 
-protocol CharactersPresenterProtocol {
-    func getArrayOfCharacters ()
-    func getImageAndDate(by urlStr: String, handler: @escaping (UIImage, Date) -> ())
-}
+

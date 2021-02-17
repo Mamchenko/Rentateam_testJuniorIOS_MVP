@@ -39,14 +39,9 @@ class InfoViewController: UIViewController, InfoViewControllerProtocol {
         super.viewDidLoad()
         presenter = InfoViewControllerPresenter(controller: self)
         configureConstraints()
-       
-        
     }
     
     private func configureConstraints () {
-        
-        
-        
         [imageView, dateLabel].forEach {view.addSubview($0)}
         
         imageView.snp.makeConstraints { (make) in
@@ -65,10 +60,5 @@ class InfoViewController: UIViewController, InfoViewControllerProtocol {
         
         view.backgroundColor = UIColor(named: "mainBckgroundColor")
     }
-   
-    
 }
 
-protocol InfoViewControllerProtocol {
-    
-}
